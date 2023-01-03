@@ -1,0 +1,36 @@
+{% extends "baseadmin.html.twig" %}
+
+{% block body %}
+    <form clas="form-inline mt-1" method="POST" action="{{ path('admin.environnement.ajout') }}">
+        <div class="form-group mr-1 mb2">
+            <input type="text" class="sm" name="nom">
+            <button type="submit" class="btn btn-primary mb-2 btn-sm">Ajouter</button>
+        </div>
+    </form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Nom
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for environnement in environnements %}
+                <tr>
+                    <td>
+                        {{ environnement.nom }}
+                    </td>
+                    <td>
+                        <a href="{{ path('admin.environnement.suppr', {id:environnement.id}) }}"
+                           class="btn btn-danger"
+                           onclick="return confirm('Etes-vous sûr de vouloir supprimer {{environnement.nom}} ?')">
+                           Supprimer
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}
