@@ -100,4 +100,16 @@ class VisiteRepository extends ServiceEntityRepository
             }
         }
         
+        /**
+        * Retourne les deux dernière visites
+        * @return Visite[]
+        */
+        public function findTwoOrderBy(): array{
+            return $this->createQueryBuilder('v')
+                    ->orderBy('v.datecreation', 'DESC')
+                    ->setMaxResults(2)
+                    ->getQuery()
+                    ->getResult();
+        }
+        
 }
