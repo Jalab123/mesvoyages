@@ -39,6 +39,7 @@ class Visite
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Assert\LessThanOrEqual("now")
      */
     private $datecreation;
 
@@ -55,12 +56,12 @@ class Visite
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Assert\GreaterThan(propertyPath="tempmin")
      */
     private $tempmin;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\GreaterThan(propertyPath="tempmin")
      */
     private $tempmax;
 
