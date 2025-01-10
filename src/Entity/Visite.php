@@ -222,13 +222,13 @@ class Visite
         $file = $this->getImageFile();
         if($file != null && $file != ""){
             $poids = @filesize($file);
-            if($poids != false && $poids > 512000){
+            if($poids && $poids > 512000){
                 $context->buildViolation("Cette image est trop lourde (500Ko max)")
                         ->atPath('imageFile')
                         ->addViolation();
             }
             $infosImage = @getimagesize($file);
-            if($infosImage == false){
+            if($infosImage){
                 $context->buildViolation("Ce fichier n'est pas une image")
                         ->atPath('imageFile')
                         ->addViolation();
